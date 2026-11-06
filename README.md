@@ -1,28 +1,104 @@
-# SlotSync
+<div align="center">
+
+# 📅 SlotSync
+
 ### Appointment Booking & Walk-in Queue Manager
 
-SlotSync is a simple appointment and queue management application for small service desks, clinics, salons, and campus offices. It assigns ticket numbers, limits each time slot to three active bookings, supports cancellations, and exposes queue positions through a small JSON API.
+A simple booking and queue management system for service desks, clinics, salons, and campus offices.
 
-> **Repository description:** A Flask + SQLite appointment scheduler with slot capacity, ticket numbering, booking cancellation, and live queue positions.
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black?style=for-the-badge&logo=flask&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![License](https://img.shields.io/badge/License-See%20LICENSE-lightgrey?style=for-the-badge)
 
-## Features
-- Book an appointment with customer, service, and date/time
-- Reject past appointments and incomplete booking details
-- Enforce a maximum of three active bookings per time slot
-- Generate daily ticket numbers
-- View bookings by date
-- Cancel active appointments
-- Check the live position of customers in a slot
-- Persist bookings in SQLite
+</div>
 
-## Tech stack
-- Python 3.10+
-- Flask
-- SQLite
-- HTML, CSS and vanilla JavaScript
-- pytest
+---
 
-## Project structure
+## 📌 Overview
+
+**SlotSync** is an appointment scheduling application built with Flask and SQLite. It helps manage bookings, enforce a fixed capacity for each time slot, generate ticket numbers, handle cancellations, and show customers their live queue positions.
+
+## ✨ Features
+
+- 🗓️ **Appointment booking** — book a service for a selected date and time
+- 👥 **Slot capacity** — maximum of three active bookings per time slot
+- 🎟️ **Ticket numbering** — generate daily ticket numbers
+- ❌ **Cancellation** — cancel active appointments
+- 📋 **Daily schedule** — view bookings by date
+- 🔢 **Queue position** — check active queue order for a slot
+- 💾 **Persistent storage** — save bookings in SQLite
+- 🔌 **JSON API** — access booking and queue data
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| Python 3.10+ | Core programming language |
+| Flask | Backend web framework |
+| SQLite | Data storage |
+| HTML, CSS, JavaScript | Frontend |
+| pytest | Automated testing |
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Python 3.10 or later
+- pip
+
+### Installation
+
+```bash
+git clone https://github.com/kalashsri18-crypto/Kalash-2.git
+cd Kalash-2
+
+python -m venv .venv
+
+# Windows
+.venv\Scripts\activate
+
+# macOS / Linux
+source .venv/bin/activate
+
+pip install -r requirements.txt
+python app.py
+```
+
+Visit **http://127.0.0.1:5000**. The SQLite database is initialized automatically.
+
+### Configuration
+
+Set the `DATABASE` environment variable to choose a different database path. Use `FLASK_DEBUG=1` only during local development.
+
+## 🔗 API Reference
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/slots?date=YYYY-MM-DD` | List bookings for a date |
+| POST | `/api/appointments` | Create an appointment |
+| PATCH | `/api/appointments/<id>/cancel` | Cancel an active booking |
+| GET | `/api/queue?starts_at=YYYY-MM-DDTHH:MM` | Get active queue and positions |
+
+Example booking request:
+
+```json
+{
+  "customer": "Asha",
+  "service": "Consultation",
+  "starts_at": "2026-12-10T12:00"
+}
+```
+
+Use a future date and time when testing the endpoint.
+
+## 🧪 Run Tests
+
+```bash
+pytest -q
+```
+
+## 📁 Project Structure
+
 ```text
 .
 ├── app.py
@@ -34,58 +110,17 @@ SlotSync is a simple appointment and queue management application for small serv
 └── README.md
 ```
 
-## Getting started
+## 📍 Current Scope
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/kalashsri18-crypto/Kalash-2.git
-cd Kalash-2
-```
+This is currently a single-location demo with a fixed capacity of three active bookings per time slot. User accounts, staff calendars, notifications, payment processing, and multi-location support are not included yet.
 
-### 2. Create and activate a virtual environment
-```bash
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# macOS / Linux
-source .venv/bin/activate
-```
+## 👨‍💻 Author
 
-### 3. Install and run
-```bash
-pip install -r requirements.txt
-python app.py
-```
-Visit **http://127.0.0.1:5000**.
+**Kalash Srivastava**  
+[GitHub](https://github.com/kalashsri18-crypto) · [LinkedIn](https://www.linkedin.com/in/kalash-srivastava-b6592a3b3) · [Email](mailto:kalashsri18@gmail.com)
 
-The SQLite database is initialized automatically. Set the `DATABASE` environment variable to use a different database path. Use `FLASK_DEBUG=1` only during local development.
+---
 
-## API reference
-
-| Method | Endpoint | Purpose |
-|---|---|---|
-| GET | `/api/slots?date=YYYY-MM-DD` | List bookings for a date |
-| POST | `/api/appointments` | Create a booking |
-| PATCH | `/api/appointments/<id>/cancel` | Cancel an active booking |
-| GET | `/api/queue?starts_at=YYYY-MM-DDTHH:MM` | Get active queue and positions |
-
-Example booking payload:
-```json
-{
-  "customer": "Asha",
-  "service": "Consultation",
-  "starts_at": "2026-12-10T12:00"
-}
-```
-Use a future date/time when testing the endpoint.
-
-## Run tests
-```bash
-pytest -q
-```
-
-## Current scope
-This is a single-location demo with a fixed capacity of three active bookings per time slot. It does not yet include user accounts, staff calendars, notifications, payment processing, or multi-location support.
-
-## License
-See [LICENSE](LICENSE).
+<div align="center">
+  Made with ❤️ by Kalash
+</div>
