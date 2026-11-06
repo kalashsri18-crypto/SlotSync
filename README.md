@@ -49,8 +49,8 @@ A simple booking and queue management system for service desks, clinics, salons,
 ### Installation
 
 ```bash
-git clone https://github.com/kalashsri18-crypto/Kalash-2.git
-cd Kalash-2
+git clone https://github.com/kalashsri18-crypto/SlotSync.git
+cd SlotSync
 
 python -m venv .venv
 
